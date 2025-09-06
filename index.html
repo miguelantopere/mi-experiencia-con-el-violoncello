@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mi experiencia en el violoncello</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      text-align: center;
+      padding: 40px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 200vw;
+      height: 100%;
+      background-image: url('https://i.imgur.com/PUJju1b.png'), url('https://i.imgur.com/PUJju1b.png');
+      background-size: 100vw 100%, 100vw 100%;
+      background-position: 0 0, 100vw 0;
+      background-repeat: no-repeat, no-repeat;
+      animation: forestScroll 60s linear infinite;
+      z-index: -1;
+      opacity: 0.5;
+    }
+
+    @keyframes forestScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100vw); }
+    }
+
+    h1 {
+      color: #2c3e50;
+      margin-bottom: 40px;
+    }
+
+    .circle-container {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 30px;
+    }
+
+    .circle {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-weight: bold;
+      border: 4px solid white;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .circle:hover {
+      transform: scale(1.15);
+    }
+
+    .ética {
+      background-color: #3498db; /* azul */
+    }
+
+    .semiótica {
+      background-color: #27ae60; /* verde */
+    }
+
+    .plástica {
+      background-color: #e74c3c; /* rojo */
+    }
+
+    #text-box {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 2px solid #ccc;
+      background-color: #fff;
+      font-size: 16px;
+      color: #333;
+      min-height: 120px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Mi experiencia en el violoncello</h1>
+
+  <div class="circle-container">
+    <div class="circle ética" onclick="showText('ética')">Ética</div>
+    <div class="circle semiótica" onclick="showText('semiótica')">Semiótica</div>
+    <div class="circle plástica" onclick="showText('plástica')">Plástica</div>
+  </div>
+
+  <div id="text-box">
+    Haz clic en uno de los círculos para ver el contenido.
+  </div>
+
+  <script>
+    function showText(topic) {
+      const textBox = document.getElementById('text-box');
+      let content = '';
+      let backgroundColor = '';
+
+      switch(topic) {
+        case 'ética':
+          content = 'En una oportunidad, durante una importante audición, quize darle un toque personal que no formaba parte de la partitura de la pieza en cuestión. No era por vanidad, sino por convicción: sentía que la obra pedía una pausa para respirar. El jurado me miró con extrañeza, pero una de las juezas sonrió y me dijo: "Eso es improvisado?" a lo que respondí afirmativamente, respondiendo inmediantamente "gracias por ser honesto". Ese día comprendí que ser fiel a la música a veces conlleva desafíos y entendí que en el arte, la ética no siempre se trata de seguir a ciegas las reglas, sino saber cuando romperlas, siempre con respeto.';
+          backgroundColor = '#3498db';
+          break;
+        case 'semiótica':
+          content = 'En una presentación escolar, toqué una pieza sin decir una sola palabra. Al terminar, una niña se acercó y me preguntó si el personaje de la música estaba triste o enamorado. Me sorprendió que hubiera captado tanto. Le respondí: "¿Y tú qué crees?" Ella dijo: "Creo que estaba recordando algo que lo hizo llorar, pero también sonreír." En ese momento pude entender que con el violoncello no solo puedo emitir notas, también signos y cada acorde es una expresión y cada silencio es una pregunta que solo el que la escucha puede interpretar y responder. La música es un lenguaje que se transmite sin necesidad de voz.';
+          backgroundColor = '#27ae60';
+          break;
+        case 'plástica':
+          content = 'Practicando violoncello una noche, al cerrar mis ojos imaginé que cada nota era el trazo de un pincel en un lienzo.Las notas graves eran trazos gruesos, las agudas eran destellos de luz. Sentí que estaba pintando un cuadro con sonido. El arco se convirtió en mi brocha, y el mástil en mi lienzo. Al terminar, no tenía una obra visual, pero sí una forma sonora que solo podía verse en mi mente. Desde entonces, el violoncello dejó de solo producir música: se volvió escultura, pintura, arquitectura emocional.';
+          backgroundColor = '#e74c3c';
+          break;
+      }
+
+      textBox.innerText = content;
+      textBox.style.backgroundColor = backgroundColor;
+      textBox.style.color = 'white';
+    }
+  </script>
+
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97b1607b92b648d8',t:'MTc1NzE5NzQ3MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
