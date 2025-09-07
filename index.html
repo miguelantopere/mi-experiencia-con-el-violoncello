@@ -127,18 +127,11 @@
 </head>
 <body>
 <script>
-  // Reproduce el audio al hacer clic en cualquier círculo
-  document.querySelectorAll('.circle').forEach(circle => {
-    circle.addEventListener('click', () => {
-      const audio = document.getElementById('https://www.dropbox.com/scl/fi/evkz3ohg61sxgagsrlmmz/Bach-Cello-Suite-No.-1-in-G-Major-Pr-lude.mp3?rlkey=yit3u82j0a3f2vbns10vo5qmt&st=lzzh5wxx&dl=1');
-      if (audio.paused) {
-        audio.play().catch(err => {
-          console.warn("No se pudo reproducir el audio automáticamente:", err);
-        });
-      }
-    });
-  });
-</script>
+<!-- Audio: inicia pausado y se reproduce tras interacción -->
+<audio id="backgroundMusic" loop>
+  <source src="https://www.dropbox.com/scl/fi/evkz3ohg61sxgagsrlmmz/Bach-Cello-Suite-No.-1-in-G-Major-Pr-lude.mp3?rlkey=yit3u82j0a3f2vbns10vo5qmt&st=lzzh5wxx&raw=1" type="audio/mpeg">
+  Tu navegador no soporta el elemento de audio.
+</audio>
   <h1>Mi experiencia con el violoncello</h1>
 
   <div class="circle-container">
@@ -194,10 +187,23 @@
       textBox.style.color = 'white';
       typeWriter(textBox, content, 30);
     }
+  <script>
+  // Reproduce el audio al hacer clic en cualquier círculo
+  document.querySelectorAll('.circle').forEach(circle => {
+    circle.addEventListener('click', () => {
+      const audio = document.getElementById('backgroundMusic');
+      if (audio.paused) {
+        audio.play().catch(err => {
+          console.warn("No se pudo reproducir el audio automáticamente:", err);
+        });
+      }
+    });
+  });
   </script>
 
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97b94a8c73c842f0',t:'MTc1NzI4MDQ1Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
+
 
 
 
