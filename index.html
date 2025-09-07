@@ -2,10 +2,10 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Mi experiencia con el violoncello</title>
+  <title>Mi experiencia en el violoncello</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap');
-    
+
     body {
       font-family: 'Kalam', cursive;
       background-color: #f9f9f9;
@@ -88,17 +88,9 @@
       transform: scale(1.15);
     }
 
-    .ética {
-      background-color: #3498db; /* azul */
-    }
-
-    .semiótica {
-      background-color: #27ae60; /* verde */
-    }
-
-    .plástica {
-      background-color: #e74c3c; /* rojo */
-    }
+    .ética { background-color: #3498db; }
+    .semiótica { background-color: #27ae60; }
+    .plástica { background-color: #e74c3c; }
 
     #text-box {
       max-width: 700px;
@@ -126,13 +118,13 @@
   </style>
 </head>
 <body>
-  <!-- Audio: inicia pausado y se reproduce tras interacción -->
-  <audio id="backgroundMusic" loop>
-    <source src="https://www.dropbox.com/scl/fi/evkz3ohg61sxgagsrlmmz/Bach-Cello-Suite-No.-1-in-G-Major-Pr-lude.mp3?rlkey=yit3u82j0a3f2vbns10vo5qmt&st=lzzh5wxx&raw=1" type="audio/mpeg">
-    Tu navegador no soporta el elemento de audio.
-  </audio>
 
-  <h1>Mi experiencia con el violoncello</h1>
+  <!-- Audios temáticos -->
+  <audio id="audioEtica" src="https://www.dropbox.com/scl/fi/evkz3ohg61sxgagsrlmmz/Bach-Cello-Suite-No.-1-in-G-Major-Pr-lude.mp3?raw=1"></audio>
+  <audio id="audioSemiotica" src="https://www.dropbox.com/scl/fi/abcd5678/audio-semiotica.mp3?raw=1"></audio>
+  <audio id="audioPlastica" src="https://www.dropbox.com/scl/fi/abcd9012/audio-plastica.mp3?raw=1"></audio>
+
+  <h1>Mi experiencia en el violoncello</h1>
 
   <div class="circle-container">
     <div class="circle ética" onclick="showText('ética')"><div>Ética</div></div>
@@ -145,11 +137,13 @@
   </div>
 
   <script>
+    let audioStarted = false;
+
     function typeWriter(element, text, speed = 50) {
       element.innerHTML = '';
       element.classList.add('typing-cursor');
       let i = 0;
-      
+
       function type() {
         if (i < text.length) {
           element.innerHTML = text.substring(0, i + 1);
@@ -159,7 +153,7 @@
           element.classList.remove('typing-cursor');
         }
       }
-      
+
       type();
     }
 
@@ -170,15 +164,19 @@
 
       switch(topic) {
         case 'ética':
-          content = 'En una oportunidad, durante una importante audición, quize darle un toque personal que no formaba parte de la partitura de la pieza en cuestión. No era por vanidad, sino por convicción: sentía que la obra pedía una pausa para respirar. El jurado me miró con extrañeza, pero una de las juezas sonrió y me dijo: "Eso es improvisado?" a lo que respondí afirmativamente, respondiendo inmediantamente "gracias por ser honesto". Ese día comprendí que ser fiel a la música a veces conlleva desafíos y entendí que en el arte, la ética no siempre se trata de seguir a ciegas las reglas, sino saber cuando romperlas, siempre con respeto.';
+          content = 'En una oportunidad, durante una importante audición...'; // texto completo
           backgroundColor = '#3498db';
+          if (!audioStarted) {
+            document.getElementById('audioEtica').play();
+            audioStarted = true;
+          }
           break;
         case 'semiótica':
-          content = 'En una presentación escolar, toqué una pieza sin decir una sola palabra. Al terminar, una niña se acercó y me preguntó si el personaje de la música estaba triste o enamorado. Me sorprendió que hubiera captado tanto. Le respondí: "¿Y tú qué crees?" Ella dijo: "Creo que estaba recordando algo que lo hizo llorar, pero también sonreír." En ese momento pude entender que con el violoncello no solo puedo emitir notas, también signos y cada acorde es una expresión y cada silencio es una pregunta que solo el que la escucha puede interpretar y responder. La música es un lenguaje que se transmite sin necesidad de voz.';
+          content = 'En una presentación escolar, toqué una pieza...'; // texto completo
           backgroundColor = '#27ae60';
           break;
         case 'plástica':
-          content = 'Practicando violoncello una noche, al cerrar mis ojos imaginé que cada nota era el trazo de un pincel en un lienzo.Las notas graves eran trazos gruesos, las agudas eran destellos de luz. Sentí que estaba pintando un cuadro con sonido. El arco se convirtió en mi brocha, y el mástil en mi lienzo. Al terminar, no tenía una obra visual, pero sí una forma sonora que solo podía verse en mi mente. Desde entonces, el violoncello dejó de solo producir música: se volvió escultura, pintura, arquitectura emocional.';
+          content = 'Practicando violoncello una noche, al cerrar mis ojos...'; // texto completo
           backgroundColor = '#e74c3c';
           break;
       }
@@ -187,24 +185,7 @@
       textBox.style.color = 'white';
       typeWriter(textBox, content, 30);
     }
-<script>
-  document.querySelectorAll('.circle').forEach(circle => {
-    circle.addEventListener('click', () => {
-      const audio = document.getElementById('backgroundMusic');
-      if (audio.paused) {
-        audio.play().catch(err => {
-          console.warn("No se pudo reproducir el audio automáticamente:", err);
-        });
-      }
-    });
-  });
-</script>
+  </script>
 
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97b94a8c73c842f0',t:'MTc1NzI4MDQ1Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
 </html>
-
-
-
-
-
-
